@@ -286,33 +286,3 @@ Disclaimer
 All security research published in this repository is intended for authorized testing, controlled laboratories and educational purposes.
 
 No unauthorized systems should be tested using techniques described in these materials.
-
-
-## Commit it as
-
-```text
-Improve security writeups repository documentation
-After this commit
-
-Your repository will have a much cleaner progression:
-
-security-writeups
-│
-├── README.md                    ← Recruiter entry point
-│
-├── web-application-security
-│   ├── xss
-│   │   └── stored-xss.md
-│   └── injection
-│       └── sql-injection.md
-│
-├── api-security
-│   ├── authorization
-│   │   └── bola.md
-│   ├── authentication
-│   │   └── jwt-security.md
-│   └── input-validation
-│       └── mass-assignment.md
-│
-└── methodology
-    └── web-application-security-assessment.md
