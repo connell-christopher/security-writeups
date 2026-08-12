@@ -1,0 +1,12 @@
+{
+  "name": "bola-secure-lab",
+  "version": "1.0.0",
+  "description": "Secure REST API demonstrating object-level authorization.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
