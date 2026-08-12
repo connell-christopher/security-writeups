@@ -1,36 +1,59 @@
+
 # Security Writeups
 
-Technical research and practical security analysis focused on **Web Application Security, API Security and Secure Software Engineering**.
+Technical security research and practical application-security analysis by **Connell Christopher**, focused on Web Application Security, API Security and Secure Software Engineering.
 
-This repository documents security concepts through authorized testing, controlled laboratories, intentionally vulnerable applications, independent research and secure-coding exercises.
+This repository contains authorized security research, controlled laboratory exercises, vulnerability analysis, secure-coding studies and application-security methodology.
 
 ---
 
-## Focus Areas
+## About
+
+I focus on understanding how modern web applications and APIs are designed, how security controls are implemented, where those controls can fail and how the underlying conditions can be remediated.
+
+My technical foundation includes:
+
+- JavaScript
+- SQL
+- HTML
+- HTTP
+- REST APIs
+- JSON
+- YAML
+- Bash
+- Linux
+- Secure coding
+
+My security research is primarily aligned with the **OWASP Top 10**, API security principles and secure software engineering practices.
+
+---
+
+## Security Focus
 
 ### Web Application Security
 
 - Cross-Site Scripting (XSS)
-- Injection
+- SQL Injection
 - Authentication
 - Authorization
 - Access Control
 - Security Misconfiguration
 - Business Logic
-- Session Security
 - Input Validation
+- Session Security
 
 ### API Security
 
-- Authentication & Authorization
 - BOLA / IDOR
+- Authentication
 - JWT Security
+- Authorization
 - Input Validation
-- Excessive Data Exposure
-- API Misconfiguration
+- Mass Assignment
+- Data Exposure
 - Rate Limiting
 - Business Logic
-- Error Handling
+- API Misconfiguration
 
 ### Secure Software Engineering
 
@@ -40,14 +63,137 @@ This repository documents security concepts through authorized testing, controll
 - Security controls
 - Remediation
 - Retesting
+- Security-aware application design
 
 ---
 
-## Methodology
+# Technical Write-ups
 
-My security research generally follows this workflow:
+## Web Application Security
+
+### Cross-Site Scripting
+
+**Stored XSS**
+
+Demonstrates the security impact of unsafe handling and rendering of user-controlled data.
+
+→ [`stored-xss.md`](web-application-security/xss/stored-xss.md)
+
+---
+
+### Injection
+
+**SQL Injection**
+
+Examines unsafe database query construction, parameterized queries, input handling and database security.
+
+→ [`sql-injection.md`](web-application-security/injection/sql-injection.md)
+
+---
+
+## API Security
+
+### Authorization
+
+**BOLA / IDOR**
+
+Examines object-level authorization and the security boundary between authenticated users and resources.
+
+→ [`bola.md`](api-security/authorization/bola.md)
+
+---
+
+### Authentication
+
+**JWT Security**
+
+Examines token-based authentication, JWT validation and common implementation weaknesses.
+
+→ [`jwt-security.md`](api-security/authentication/jwt-security.md)
+
+---
+
+### Input Validation
+
+**Mass Assignment**
+
+Examines excessive trust in client-controlled object properties and secure property-level authorization.
+
+→ [`mass-assignment.md`](api-security/input-validation/mass-assignment.md)
+
+---
+
+# Security Assessment Methodology
+
+My application-security assessment process follows a structured lifecycle:
 
 ```text
+Authorization & Scope
+        ↓
+Reconnaissance
+        ↓
+Attack Surface Mapping
+        ↓
+Application / API Analysis
+        ↓
+Authentication Testing
+        ↓
+Authorization Testing
+        ↓
+Input & Injection Testing
+        ↓
+Business Logic Testing
+        ↓
+Configuration Review
+        ↓
+Impact Assessment
+        ↓
+Reporting
+        ↓
+Remediation
+        ↓
+Retesting
+
+The objective is not simply to identify a vulnerability.
+
+The objective is to understand:
+
+What happened?
+     ↓
+Why did it happen?
+     ↓
+What can it affect?
+     ↓
+How should it be fixed?
+     ↓
+Does the fix actually work?
+
+→ Web Application Security Assessment Methodology
+
+OWASP Alignment
+
+The research in this repository is informed by application-security principles from the OWASP ecosystem, including:
+
+OWASP Top 10
+OWASP Web Security Testing Guide
+OWASP API Security guidance
+Secure coding principles
+Authentication and authorization guidance
+
+Relevant write-ups identify:
+
+Vulnerability class
+Attack surface
+Root cause
+Security impact
+Testing methodology
+Remediation
+Verification
+Relevant security classification
+Research Methodology
+
+Security research generally follows:
+
 Reconnaissance
       ↓
 Attack Surface Identification
@@ -66,67 +212,107 @@ Remediation
       ↓
 Retesting
 
-The objective is not simply to identify a vulnerability, but to understand the underlying condition that allowed it to exist and how that condition can be prevented.
+Testing focuses on understanding application behavior and security boundaries rather than simply relying on automated vulnerability discovery.
 
-Repository Structure
-security-writeups/
-│
-├── web-application-security/
-│   ├── xss/
-│   ├── injection/
-│   ├── authentication/
-│   ├── authorization/
-│   ├── security-misconfiguration/
-│   └── business-logic/
-│
-├── api-security/
-│   ├── authentication/
-│   ├── authorization/
-│   ├── data-exposure/
-│   ├── input-validation/
-│   └── business-logic/
-│
-├── secure-coding/
-│
-└── methodology/
-Disclosure & Ethics
+Responsible Disclosure & Confidentiality
 
-All testing documented in this repository is intended for:
+Security testing should always be performed with appropriate authorization.
+
+Research documented here is intended for:
 
 Authorized security testing
 Controlled laboratories
 Intentionally vulnerable applications
 Independently created research
 Educational environments
+Secure-coding exercises
 
-I do not publish confidential information, private source code, customer information, undisclosed vulnerabilities or security findings covered by confidentiality agreements.
+I do not publish:
 
-Professional security findings that are subject to NDA remain private.
+Confidential information
+Private source code
+Customer information
+Credentials or secrets
+Undisclosed vulnerabilities
+Security findings covered by confidentiality agreements
 
-Where appropriate, lessons from professional work may be represented through anonymized concepts or independently reproducible research without exposing the affected organization or sensitive technical data.
+Professional security findings subject to NDA remain private.
 
-OWASP Alignment
+Where appropriate, lessons from professional security work may be represented through independently reproducible research or anonymized security concepts without exposing the affected organization or sensitive technical information.
 
-Research is organized around application-security principles informed by the OWASP Top 10 and related application-security guidance.
+Engineering Perspective
 
-Each relevant write-up aims to identify:
+Security is closely connected to software engineering.
 
-Vulnerability class
-Attack surface
-Root cause
-Security impact
-Testing methodology
-Remediation
-Verification
-Relevant security classification
-Status
+Understanding the application beneath the attack surface makes it possible to reason about:
+
+Client
+  ↓
+HTTP
+  ↓
+Application Logic
+  ↓
+Security Controls
+  ↓
+API
+  ↓
+Database
+
+This engineering perspective helps identify root causes and develop remediation that addresses the underlying condition rather than simply suppressing the visible symptom.
+
+Current Status
 
 This repository is actively being developed.
 
-New research, laboratories and secure-coding examples will be added over time.
+Future research will expand into:
 
-About
+Additional Web Application Security research
+API security
+Authentication and authorization
+Business logic
+Secure coding
+Security testing methodology
+Controlled application-security laboratories
+Author
 
 Connell Christopher
 
 Web Application Security · API Security · Secure Coding
+
+Focused on building and securing modern web applications and APIs.
+
+Disclaimer
+
+All security research published in this repository is intended for authorized testing, controlled laboratories and educational purposes.
+
+No unauthorized systems should be tested using techniques described in these materials.
+
+
+## Commit it as
+
+```text
+Improve security writeups repository documentation
+After this commit
+
+Your repository will have a much cleaner progression:
+
+security-writeups
+│
+├── README.md                    ← Recruiter entry point
+│
+├── web-application-security
+│   ├── xss
+│   │   └── stored-xss.md
+│   └── injection
+│       └── sql-injection.md
+│
+├── api-security
+│   ├── authorization
+│   │   └── bola.md
+│   ├── authentication
+│   │   └── jwt-security.md
+│   └── input-validation
+│       └── mass-assignment.md
+│
+└── methodology
+    └── web-application-security-assessment.md
